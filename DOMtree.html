@@ -6,7 +6,11 @@
   <title>Document</title>
 </head>
 <body>
-  <!-- DOM의 규정에 따라 html의 모든 tag는 객체(object)입니다. 심지어 tag안의 text역시 
-  객체로 취급됩니다. 따라서 document.body는 document객체의 body객체를 잡습니다. -->
+  <!-- DOM의 규정에 따라 html의 모든 tag는 객체(object)입니다. HTML 안의 모든 것은 (심지어 그것이 주석이더라도) DOM을 구성합니다. 예를 들어 document.body는 document객체의 body객체를 잡습니다.  심지어 tag안의 text역시 객체로 취급됩니다. 이런 모든 객체들이 html안에서는 각각 node가 됩니다. 노드 타입은 총 열두 가지 인데, 실무에선 주로 다음 네 가지 노드를 다룹니다.
+    - DOM의 '진입점"이 되는 문서(document) 노드
+    - HTML 태그에서 만들어지며, DOM 트리를 구성하는 블록인 요소 노드(element node)
+    - 텍스트를 포함하는 텍스트 노드(text node)
+    - 화면에 보이지는 않지만, 정보를 기록하고 자바스크립트를 사용해 이 정보를 DOM으로부터 읽을 수 있는 주석(comment) 노드
+  -->
 </body>
 </html>

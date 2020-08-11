@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!-- DOM에 수행하는 모든 연산은 document 객체에서 시작합니다. document 객체는 DOM에 접근하기 위한 '진입점’이죠. document.body는 <body> 요소에 해당하는 DOM 노드로, 자주 쓰이는 노드 중 하나입니다.<head> 태그는 document.head로 접근할 수 있습니다.-->
+
+<html lang="en">
+<head>
+  <script>
+    alert( "HEAD: " + document.body ); // null, 아직 <body>에 해당하는 노드가 생성되지 않았음
+  </script>
+</head>
+<body>
+  <script>
+    alert( "BODY: " + document.body ); // HTMLBodyElement, 지금은 노드가 존재하므로 읽을 수 있음
+  </script>
+</body>
+</html>
