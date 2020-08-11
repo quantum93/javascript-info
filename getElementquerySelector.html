@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- element가 가까이 붙어있다면 앞서 학습한 DOM 탐색 프로퍼티를 사용해 목표 요소에 쉽게 접근할 수 있습니다. 그런데, 요소들이 가까이 붙어있지 않은 경우도 있기 마련입니다. 상대 위치를 이용하지 않으면서 웹 페이지 내에서 원하는 요소 노드에 접근하는 방법은 getElement와 querySelector입니다. -->
+  <div id="elem">
+    <div id="elem-content">Element</div>
+  </div>
+  <script>
+    let elem = document.getElementById('elem');
+    elem.style.background = 'red';
+    /* 이에 더하여 id 속성값을 그대로 딴 전역 변수를 이용해 접근할 수도 있습니다. 
+    elem.style.background = 'red';
+    id가 elem-content인 요소는 중간에 하이픈(-)이 있기 때문에 변수 이름으로 쓸 수 없습니다.
+    이럴 땐 대괄호(`[...]`)를 사용해서 window['elem-content']로 접근하면 됩니다. */
+  </script>
+
+  <ul>
+    <li>1-1</li>
+    <li>1-2</li>
+  </ul>
+  <ul>
+    <li>2-1</li>
+    <li>2-2</li>
+  </ul>
+  <script>
+    let elements = document.querySelectorAll('ul > li:last-child');
+    for(let elem of elements) {
+      alert(elem.innerHTML);
+    }
+  </script>
+</body>
+</html>
