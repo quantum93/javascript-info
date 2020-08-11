@@ -11,5 +11,35 @@
   <script>
     alert( "BODY: " + document.body ); // HTMLBodyElement, 지금은 노드가 존재하므로 읽을 수 있음
   </script>
+  <div>start</div>
+  <ul>
+    <li>items</li>
+  </ul>
+  <div>end</div>
+  <script>
+    for(let i = 0; i < document.body.childNodes.length; i++) {
+      alert(document.body.childNodes[i]);
+    }
+  </script>
+  ...addtional items ... // 이게 위의 for 문에서는 잡히지 않는다.
+
+  <!-- firstChild와 lastChild 프로퍼티를 이용하면 첫 번째, 마지막 자식 노드에 빠르게 접근할 수 있습니다. 이 프로퍼티들은 단축키 같은 역할을 합니다. 자식 노드가 존재하면 아래 비교문은 항상 참이 됩니다.
+
+    - elem.childNodes[0] === elem.firstChild
+    - elem.childNodes[elem.childNodes.length - 1] === elem.lastChild 
+  
+    참고로 자식 노드의 존재 여부를 검사할 땐 함수 elem.hasChildNodes()를 사용할 수도 있습니다. -->
+  <table id="table">
+    <tr>
+      <td>one</td><td>two</td>
+    </tr>
+    <tr>
+      <td>three</td><td>four</td>
+    </tr>
+  </table>
+  <script>
+    let td = table.rows[0].cells[1];
+    td.style.backgroundColor = "red";
+  </script>
 </body>
 </html>
