@@ -24,4 +24,8 @@ console.log(list.next);
  * */
 
  const sumTo = n => n > 1 ? n + sumTo(n-1): 1;
+ const factorial = n => n != 1 ? n*factorial(n-1): 1;
+ const fib = n => n <= 1 ? n : fib(n - 1) + fib(n - 2);
  console.log(sumTo(100));
+ console.log(factorial(5));
+ console.log(fib(77));
