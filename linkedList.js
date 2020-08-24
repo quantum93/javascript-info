@@ -25,7 +25,18 @@ console.log(list.next);
 
  const sumTo = n => n > 1 ? n + sumTo(n-1): 1;
  const factorial = n => n != 1 ? n*factorial(n-1): 1;
- const fib = n => n <= 1 ? n : fib(n - 1) + fib(n - 2);
+ const fibonacci = n => (n <= 2) ? 1 :fibonacci(n-1) + fibonacci(n-2) ;
+ // 그런데 이렇게 재귀를 사용해 구현하면 n이 커질 경우 속도가 느려집니다. fib(77)을 호출하면 CPU 리소스를 다 잡아먹어서 잠시 엔진이 멈출 수도 있. 연산 속도가 느려지는 이유는 함수 호출 도중에 수많은 서브 호출이 일어나기 때문입니다. 같은 값들이 여러 번 평가되면서 이런 일이 발생하죠.
+ const fib = n => {
+   let a =1, b = 1;
+   for(let i = 3; i <=n; i++) {
+     let c = a + b;
+     a = b;
+     b = c;
+   }
+   return b;
+ }
  console.log(sumTo(100));
  console.log(factorial(5));
+ console.log(fibonacci(7));
  console.log(fib(77));
