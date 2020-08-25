@@ -50,3 +50,48 @@ function debugF() {
 
 let myG = debugF();
 console.log(myG());
+
+/** 아래의 counter2.up counter2.down은 count변수를 공유하므로 변수의 갱신을 기억한다. */
+function Counter() {
+  let count = 0;
+  this.up = () => ++count;
+  this.down = () => --count; 
+}
+
+let counter2 = new Counter();
+console.log(counter2.up());
+console.log(counter2.up());
+console.log(counter2.down());
+
+let phrase = "Hello";
+
+if (true) {
+  let user = "John";
+  // const sayHi = () => { console.log(`${phrase}, ${user}`); } 이거는 에러를 발생...
+  
+  //아래 접근이 작동하는때는 엄격모드가 아닐떄 const변수를 사용하면 엄격모드를 강제하므로 에러를 발생한다. 
+  function sayHi() { console.log(`${phrase}, ${user}`); } 
+}
+
+console.log(sayHi());
+
+/** 클로저를 이용해서 합을 구하는 예제 */
+function sum(a) {
+  return function(b) {
+    return a + b; // 'a'는 외부 렉시컬 환경에서 가져옵니다.
+  };
+}
+
+// 두 번째 괄호가 제대로 동작하려면 첫 번째 괄호는 반드시 함수를 반환해야 합니다.
+console.log(sum(1)(2));
+console.log(sum(5)(-1));
+
+
+// 아래 x 변수는 존재하지만 함수안에서 찾을 수가 없다. 함수안에서 초기화가 되어있지 않으므로 에러발생
+let x = 1;
+function func() {
+  console.log(x); //a variable technically exists, but can’t be used before let.
+  let x = 2;
+}
+
+console.log(func()); 
