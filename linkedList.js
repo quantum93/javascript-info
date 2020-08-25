@@ -40,3 +40,19 @@ console.log(list.next);
  console.log(factorial(5));
  console.log(fibonacci(7));
  console.log(fib(77));
+
+ // 일단 현재 list.value를 뽑으면 가장 위의 값(첫째값)부터 출력하고 
+ // 재귀로 루프를 돌때마다 list.next의 깊이가 하나씩 들어간다.
+ const printList = (list) => {
+   console.log(list.value);
+   if (list.next) printList(list.next); // 재귀로 작동하므로 return이 굳이 필요없다.
+  }
+  console.log(printList(list));
+  
+  // 반대로 이 경우 일단 재귀로 가장 깊은 요소로 내려간다음 거기서 부터 value를 뽑으니까 역순으로 
+  // 결과를 접근하는 효과를 가진다. 이 방법은 오묘한 점은 최종 깊이를 몰라도 상관없다는 것이다. 
+ const printListRev = (list) => {
+   if (list.next) printListRev(list.next); // 재귀로 작동하므로 return이 굳이 필요없다.
+   console.log(list.value);
+}
+  console.log(printListRev(list));
