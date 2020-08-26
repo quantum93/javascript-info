@@ -22,11 +22,27 @@ console.log(welcome2()); // 외부변수를 변경해도 func로 정의된 내�
 const makeCounter = () => {
   let count = 0;
   const counter = () => count++;
-  counter.set = value => count = value;
-  counter.decrease = () => count--;
+  /* counter.set = value => count = value;
+  counter.decrease = () => count--; */
   return counter;
 }
 
 let counter = makeCounter();
 console.log(counter(), counter(), counter(), counter());
 
+/* 임의의 수만큼 있는 괄호를 이용해 합계 구하기
+sum은 함수를 반환해야만 이 모든 것이 의도한 대로 동작합니다.
+sum이 반환하는 함수는 호출될 때마다 현재 값을 메모리에 저장하고 있어야 합니다.
+ 함수는 == 를 만났을 때 숫자가 되어야 합니다. 함수는 객체이므로 객체를 원시형으로 변환하기 챕터에서 설명한 것처럼, 객체-원시형으로의 형 변환이 일어날 텐데, 이때 메서드를 직접 구현해 원하는 대로 객체-원시형으로의 형 변환이 일어나게 할 수 있습니다. */
+
+function sum(a) {
+  let currentSum = a;
+  function f(b) {
+    currentSum += b;
+    return f; // return f()가 아니다!
+  }
+  f.toString = function() {
+    return currentSum;
+  }
+  return f; // return f()가 아니다!
+}
