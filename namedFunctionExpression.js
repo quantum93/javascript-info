@@ -18,3 +18,15 @@ let sayHi2 = function func(who) {
 let welcome2 = sayHi2;
 sayHi2 = null;
 console.log(welcome2()); // 외부변수를 변경해도 func로 정의된 내부함수는 항상 동일하게 호출가능하다.
+
+const makeCounter = () => {
+  let count = 0;
+  const counter = () => count++;
+  counter.set = value => count = value;
+  counter.decrease = () => count--;
+  return counter;
+}
+
+let counter = makeCounter();
+console.log(counter(), counter(), counter(), counter());
+
