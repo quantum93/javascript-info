@@ -18,9 +18,24 @@ let rabbit2 = {
   __proto__: animal2
 };
 
+let longEar = {
+  earLength: 10,
+  __proto__: rabbit2
+};
+
 rabbit2.walk(); //animal에서 자동으로 walk를 상속받았다.
+longEar.walk(); // rabbit에서 상속, rabbit은 animal에서 상속, 즉 chaining으로 작동
+console.log(longEar.jumps);
 
+/* 프로토타입 체이닝엔 두 가지 제약사항 1. 순환 참조(circular reference)는 허용되지 않는다.
+2. __proto__의 값은 객체나 null만 가능, 다른 자료형은 무시된다. 추가로, 객체엔 오직 하나의 
+[[Portotype]]만 있을 수 있다는 당연한 제약도 있습니다. 객체는 두 개의 객체를 상속받지 못합니다. 
+(이건 자바스크립트에서만 그렇다.) */
 
+rabbit2.walk = function () {
+  console.log("토끼가 깡충깡충 뜁니다.");
+}
 
+rabbit2.walk() // 이제 더이상 상속의 walk가 아니라 직접 지정한 walk() method를 사용한다. 
 
 
