@@ -106,7 +106,7 @@ function readData() {
     blabla(); //error will be happened.
   } catch (e) {
     if(!(e instanceof SyntaxError)) {
-      throw e;
+      throw e; // syntax 에러가 아님으로 그냥 던진다. 
     }
   }
 }
@@ -114,6 +114,38 @@ function readData() {
 try {
   readData(); // SyntaxError만을 처리하는 별도의 함수를 만들면 외부에러는 다시 try/catch로 처리가능
 } catch(e) {
-  console.log("External catch got: " + e); 
+  console.log("External catch got: " + e); // 던져진 에러를 여기서 잡아서 출력
 }
 
+try {
+  console.log("try block starts");
+  if(confirm("will you make an error?")) weired_code();
+} catch(e) {
+  console.log('catch');
+} finally {
+  console.log('finally');
+}
+
+
+let num = 35;
+let diff, result;
+
+function fib(n) {
+  if(n < 0 || Math.trunc(n) != n) {
+    throw new Error("negative number or not integer");
+  } 
+  return n <= 1 ? n: fib(n-1) + fib(n-2);
+}
+
+let start = Date.now();
+
+try {
+  result = fib(num);
+} catch(e) {
+  result = 0;
+} finally {
+  diff = Date.now() - start;
+}
+
+console.log(result || "An error occured");
+console.log(`execution time is : ${diff}ms`);
