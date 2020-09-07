@@ -27,3 +27,11 @@ setTimeout(function() {
     console.log("에러를 잡았습니다!")
   }
 }, 1000);
+
+try {
+  hohoho; // 에러, 변수가 정의되어 있지 않음.
+} catch (err) {
+  console.log(err.name);
+  console.log(err.message);
+  console.log(err.stack);
+}
