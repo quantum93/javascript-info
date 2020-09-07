@@ -112,7 +112,8 @@ function readData() {
 }
 
 try {
-  readData(); //
+  readData(); // SyntaxError만을 처리하는 별도의 함수를 만들면 외부에러는 다시 try/catch로 처리가능
 } catch(e) {
   console.log("External catch got: " + e); 
 }
+
