@@ -100,3 +100,11 @@ function aclean(arr) {
 }
 
 console.log(aclean(arr));
+
+let map5 = new Map();
+map5.set("name", "John");
+console.log(map5);
+let keys = Array.from(map5.keys());
+console.log(keys);
+keys.push("more");
+console.log(keys);
