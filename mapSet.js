@@ -27,3 +27,17 @@ let ann = {name: "Ann"};
 let visitsCountObj = {}; // 빈 객체를 만든다.
 visitsCountObj[ann] = 456; // 객체 ann을 key로 값 456를 저장
 console.log(visitsCountObj["[object Object]"]); // visitsCountObj가 map이 아니고 일반 객체 이므로 모든 키를 문자형으로 변환시킵니다. 원하는 456을 출력하려면 key자리에 object Object를 써야 한다. 
+
+//chaining of map data structure
+let chainMap = new Map();
+chainMap.set("2", "string Two").set(2, "number Two").set(true, 'boolean Two');
+console.log(chainMap.get('2'));
+
+// looping with map data structure
+let recipeMap = new Map([ ['cucumber', 500], ['tomatoes', 350], ['onion',    50] ]);
+for (let vegitable of recipeMap.keys()) { console.log(vegitable); }
+for (let amount of recipeMap.values()) { console.log(amount); }
+for (let entry of recipeMap.entries()) { console.log(entry); }
+recipeMap.forEach((key,value) => { console.log(`${key}: ${value}`); });
+
+
