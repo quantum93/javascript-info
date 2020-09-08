@@ -57,3 +57,17 @@ let prices = Object.fromEntries([
 ]);
 
 console.log(prices.orange, prices['1']); //prices.1이나 prices."1"은 동작하지 않는다. 
+
+
+let mySet = new Set();
+
+let setJohn = {name: "John"};
+let setPete = {name: "Pete"};
+let setMary = {name: "Mary"};
+
+mySet.add(setJohn);
+mySet.add(setPete);
+mySet.add(setMary);
+
+console.log(mySet.size)
+for (let user of mySet) { console.log(user.name); }
