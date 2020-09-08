@@ -71,3 +71,32 @@ mySet.add(setMary);
 
 console.log(mySet.size)
 for (let user of mySet) { console.log(user.name); }
+mySet.forEach((value) => {console.log(value)});
+
+function unique(arr) {
+  return Array.from(new Set(arr));
+}
+
+let values = ["Hare", "Krishna", "Hare", "Krishna",
+"Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+console.log(unique(values));
+
+/* 애너그램(어구전철)은 단어나 문장을 구성하고 있는 문자의 순서를 바꾸어 다른 단어나 문장을 만드는 놀이입니다.
+애너그램으로 만든 단어를 걸러내는 함수 aclean(arr)을 만들어보자. 아래 주어진 배열의 원소들인 각 단어들이 
+애너그램인 경우를 판별해서 그럴 경우 그 원소만 출력한다. */
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+function aclean(arr) {
+  let map = new Map();
+  for(let word of arr) {
+    let sorted = word.toLowerCase().split('').sort().join();
+    console.log(sorted);
+    map.set(sorted, word) // sorted는 key word는 value로 저장!
+    console.log(map.keys());
+  }
+  return Array.from(map.values());
+}
+
+console.log(aclean(arr));
