@@ -40,4 +40,20 @@ for (let amount of recipeMap.values()) { console.log(amount); }
 for (let entry of recipeMap.entries()) { console.log(entry); }
 recipeMap.forEach((key,value) => { console.log(`${key}: ${value}`); });
 
+/* 평범한 객체를 map 데이터 구조로 바꾸는 방법:평범한 객체를 가지고 맵을 만들고 싶다면 내장 메서드 
+Object.entries(obj)를 활용해야 합니다. 이 메서드는 객체의 키-값 쌍을 요소([key, value])로 
+가지는 배열을 반환합니다. */
+let simpleObj = { name: "Mary", age: 21 };
+let simpleMap = new Map(Object.entries(simpleObj));
+console.log(simpleMap.get('name'));
 
+/* 반대로 map 데이터 구조를 일반 객체로 변환하는 방법은 Object.fromEntries()를 사용한다. 
+이 방법은 key:value pair의 배열을 객체구조로 전환해 준다.  */
+let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4],
+  [1, 5], //여기 숫자 1은 객체로 전환되면서 자동으로 문자 "1"로 변환된다.
+]);
+
+console.log(prices.orange, prices['1']); //prices.1이나 prices."1"은 동작하지 않는다. 
