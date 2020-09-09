@@ -32,3 +32,19 @@ let range2 = {
 for (let num2 of range2) {
   console.log(num2);
 }
+
+// 배열과 문자열은 가장 자주 쓰이는 내장 이터러블이다. 
+for (let char of "test") {
+  console.log(char);
+}
+
+/* 이런 이터레이터를 명시적으로 호출하면 좋을 때가 있는데, 이 방법을 사용하면 for..of를 사용하는 것보다 반복 
+과정을 더 잘 통제할 수 있다는 장점이 있습니다. 반복을 시작했다가 잠시 멈춰 다른 작업을 하다가 다시 반복을 
+시작하는 것과 같이 반복 과정을 여러 개로 쪼개는 것이 가능합니다. */
+let str = "Hello";
+let iterator = str[Symbol.iterator](); //변수선언을 이용 명시적으로 호출 
+while(true) {
+  let result = iterator.next();
+  if(result.done) break;
+  console.log(result.value);
+}
