@@ -48,3 +48,20 @@ while(true) {
   if(result.done) break;
   console.log(result.value);
 }
+
+// 유사 배열
+let arraylike = { //인덱스와 length property가 존재하는 유사 배열
+  0: "Hello",
+  1: "World",
+  length: 2
+};
+
+// Symbol.iterator가 없으므로 에러가 발생한다. 
+/* for (let item of arraylike) { //TypeError: arraylike is not iterable
+  console.log(item);
+} */
+
+//Array.from은 이터러블이나 유사배열을 받아서 진짜 array로 변환
+let arr = Array.from(arraylike);
+console.log(arr.pop()); //제대로 작동한다. 
+
