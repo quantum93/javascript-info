@@ -40,7 +40,7 @@ countUser(mary);
 console.log(visistsCountMap);
 
 // weakmap은 caching이 필요할때도 매우 쓸모있다. 
-let cache = new Map();
+let cache = new Map(); // 여기를 new WeakMap()으로 정의해서 weakmap을 사용
 
 function process(obj) {
   if(!cache.has(obj)) {
@@ -53,5 +53,23 @@ function process(obj) {
 let obj2 = {};
 let result1 = process(obj2);
 let result2 = process(obj2);
-obj2 = null;
+obj2 = null; // weakmap을 사용하면 이순간 바로 객체와 캐싱된 데이터도 메모리에서 삭제
 console.log(cache.size); // 1 객체가 여전히 cache에 남아있고 메모리가 낭비되고 있다.
+
+/** WeakSet은 셋과 유사한데, 객체만 저장할 수 있고 원시값은 저장할 수 없습니다. 
+ * 아래 코드에선 사용자의 사이트 방문 여부를 추적하는 용도로 위크셋을 사용하고 있습니다.
+*/
+let visitedSet = new WeakSet();
+let chris = {name: 'Chris'};
+let catherine = {name: 'Catherine'};
+let doyeon = {name: 'Doyeon'};
+
+visitedSet.add(chris);
+visitedSet.add(catherine);
+visitedSet.add(chris);
+
+console.log(visitedSet.has(chris))
+console.log(visitedSet.has(doyeon))
+
+chris = null // visitedSet에서 chris를 나타내는 객체가 자동으로 삭제된다. 
+
