@@ -24,4 +24,34 @@ console.log(map.size); // 객체의 원소가 null이어도 map객체가 메모�
 let weakMap = new WeakMap();
 let obj = {};
 weakMap.set(obj, "ok");
-weakMap.set('test',"Whoops");
+//weakMap.set('test',"Whoops");
+
+// weakmap이 유용한 순간은 특정 객체가 메모리에서 삭제되면 자동으로 해당객체에 대한 정보도 삭제되는 기능이 필요할때
+let visistsCountMap = new WeakMap()
+
+function countUser(user) {
+  let count = visistsCountMap.get(user) || 0;
+  visistsCountMap.set(user, count+1);
+}
+
+let mary = {name:"Mary"};
+countUser(mary);
+
+console.log(visistsCountMap);
+
+// weakmap은 caching이 필요할때도 매우 쓸모있다. 
+let cache = new Map();
+
+function process(obj) {
+  if(!cache.has(obj)) {
+    let result = /*연산 수행 */ obj;
+    cache.set(obj,result);
+  }
+  return cache.get(obj2);
+}
+
+let obj2 = {};
+let result1 = process(obj2);
+let result2 = process(obj2);
+obj2 = null;
+console.log(cache.size); // 1 객체가 여전히 cache에 남아있고 메모리가 낭비되고 있다.
