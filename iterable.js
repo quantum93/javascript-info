@@ -1,3 +1,8 @@
+/** for..of을 사용할 수 있는 객체를 이터러블이라고 부릅니다.
+ * 인덱스와 length 프로퍼티가 있는 객체는 유사 배열이라 불립니다. 
+ * 유사 배열 객체엔 다양한 프로퍼티와 메서드가 있을 수 있는데 배열 내장 메서드는 없습니다.
+ */
+
 let range = { from: 1, to:5 }; // 루프가 되지 않는 객체를 만든다. 
 
 range[Symbol.iterator] = function () { //Symbol.iterator는 이터레이터 객체를 반환
@@ -64,4 +69,10 @@ let arraylike = { //인덱스와 length property가 존재하는 유사 배열
 //Array.from은 이터러블이나 유사배열을 받아서 진짜 array로 변환
 let arr = Array.from(arraylike);
 console.log(arr.pop()); //제대로 작동한다. 
+
+//Array.from은 mapping을 할 수 있다. 유사객체나 이터러블을 첫인자로 두번째 인자에 함수를 넣을 수 있다.
+let arr2 = Array.from(range);
+console.log(arr2);
+let arr3 = Array.from(range, num => num*num);
+console.log(arr3);
 
