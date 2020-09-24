@@ -17,8 +17,23 @@ let [firstName, surname] = "Bora Lee".split(' '); //문자열이 배열로 배�
 let [name, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 console.log( title ); // Consul
 
+/** assignment 연산자의 우측에는 어떤 iterable도 놓을 수 있다. 또한 연산자의 좌측에는 할당이 가능한 모든 것을 놓을 수 있다. */
 let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 let user = {};
 [user.name, user.surname] = "Bora Lee".split(' ');
 console.log(user, user.name); // Bora
+//심지어 할당하고자는 변수의 개수가 분해하고자 하는 배열의 길이보다 크더라도 에러가 없이 undefined를 할당한다. 
+let [firstName2, surname2] = [];
+console.log(firstName2, surname2);
+//또는 기본값을 할당에서 설정하는것도 가능하다. 
+let [name3 = "Guest", surname3 = "Anonymous"] = ["Julius"];
+console.log(name3, surname3);
+//let [surname4 = prompt('Enter your last name'), name4 = prompt("Enter your first name")] = ["Kim"];
+let [surname4 = prompt('성을 입력하세요.'), name4 = prompt('이름을 입력하세요.')] = ["Kim"];
+console.log(surname4, name4);
+
+/** rest operator와 같이 사용하면 또한 강력한 기능을 할 수 있다. */
+let [name1, name2, ...rest] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+
+console.log(name1, name2, "rest:", rest[0], rest[1], rest.length);
