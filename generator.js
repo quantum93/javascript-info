@@ -32,3 +32,17 @@ let iteration = generatorLoop(1,10);
 for(let value of iteration) {
   console.log(value);
 }
+
+
+// 이터러블 대신 제너레이터 사용하기
+let range = { from: 1, to: 5,
+
+  [Symbol.iterator]: function*() { // *[Symbol.iterator]() { 로 축약 가능
+    for(let value = this.from; value <= this.to; value++) {
+      yield value;
+    }
+  }
+  
+};
+
+console.log( [...range] ); // 1, 2, 3, 4, 5
