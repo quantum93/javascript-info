@@ -1,0 +1,7 @@
+setTimeout(function () { console.log(this); }, 1000);
+[1,2,3,4,5].forEach(function(x) {
+  console.log(this);
+});
+
+document.body.innerHTML += '<button id="a">click</button>';
+document.body.querySelector('#a').addEventListener('click', function(e) {console.log(this,e)});
